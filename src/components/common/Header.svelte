@@ -4,7 +4,7 @@
 
     const MENUS = [
         {href: "/", title: "Root"},
-        {href: "/Home", title: "Home"},
+        {href: "/home/", title: "Home"},
         {href: "/about/", title: "About"},
         {href: "/diary/", title: "Diary"},
         {href: "/create/", title: "Create"},
