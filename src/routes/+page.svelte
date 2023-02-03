@@ -1,2 +1,12 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import Header from './../components/common/Header.svelte';
+	import Footer from './../components/common/Footer.svelte';
+
+    export let url = "";
+</script>
+
+<main>
+    <Header/>
+    <h1>Hello</h1>
+    <Footer/>
+</main>
