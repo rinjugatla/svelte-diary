@@ -12,7 +12,7 @@
 <header>
     <div class="bg-primiry-900 flex justify-between items-center">
         <Hamburger bind:open />
-        <img src="/image/logo.png" alt="logo" />
+        <img src="/image/logo.png" alt="logo" on:click={() => location.href="/home/"} />
         <HumidityAlt size={24} class="mr-6"/>
     </div>
     <Menu bind:open/>
