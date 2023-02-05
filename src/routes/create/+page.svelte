@@ -11,13 +11,13 @@
     let author_id = null;
 
     const unsubscribe = UserId.subscribe( id => author_id = id);
-    const submit = () => {
+    const submit = async () => {
         if(body.length < body_min_length){
             alert("日記には10文字異常が必要です。");
             return false;
         }
 
-        const result = postDiary(author_id, body, rate);
+        const result = await postDiary(author_id, body, rate);
         if(result){
             alert("日記を保存しました。");
             document.location.href = "/";
