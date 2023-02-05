@@ -33,6 +33,7 @@
     "carbon-icons-svelte": "^11.4.0",
     "dayjs": "^1.11.7",
     "firebase": "^9.17.1",
-    "js-cookie": "^3.0.1"
+    "js-cookie": "^3.0.1",
+    "svelte-star-rating": "^2.0.1"
   }
 }
