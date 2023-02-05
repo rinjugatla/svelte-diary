@@ -18,7 +18,7 @@ export const postDiary = async (author_id = "", body = "", rate = 5) => {
 export const fetchDiaries = async (author_id = "") => {
     const q = query(collection(db, "diaries"), 
                     where("author_id", "==", author_id),
-                    orderBy("crated_at", "desc"));
+                    orderBy("created_at", "desc"));
 
     const querySnapshot = await getDocs(q);
     let diaries = [];
