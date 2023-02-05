@@ -34,7 +34,7 @@ export const signInWithGoogle = () => {
             // The signed-in user info.
             const user = result.user;
             UserId.set(user.uid);
-            Cookies.set("uid", user.uid);
+            Cookies.set("uid", user.uid, { expires: 3 });
             // ...
         }).catch((error) => {
             // Handle Errors here.
