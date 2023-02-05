@@ -1,6 +1,5 @@
 <script>
     import { Alert } from 'flowbite-svelte';
-    import "../helper/firebase.js";
     let error = true;
 </script>
 
