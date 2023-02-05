@@ -1,4 +1,5 @@
 <script>
+    import { onDestroy } from "svelte";
 	import { UserId } from './../store.js';
 	import { signInWithGoogle, signOutWithGoogle } from './../helper/firebase.js';
     import { fly, scale } from 'svelte/transition';
@@ -16,8 +17,8 @@
     export let open;
     let uid;
 
-    UserId.subscribe(id => { uid = id; });
-
+    const unsubscribe = UserId.subscribe(id => { uid = id; });
+    onDestroy (() => { unsubscribe(); });
 </script>
 
 {#if open}
