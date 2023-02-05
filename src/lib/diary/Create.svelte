@@ -1,4 +1,5 @@
 <script>
+	import { postDiary } from './../helper/api.js';
 	import { onDestroy } from 'svelte';
 	import { UserId } from './../store.js';
     import { Range, Textarea, Label, Button } from 'flowbite-svelte'
@@ -14,6 +15,14 @@
         if(body.length < body_min_length){
             alert("日記には10文字異常が必要です。");
             return false;
+        }
+
+        const result = postDiary(author_id, body, rate);
+        if(result){
+            alert("日記を保存しました。");
+            document.location.href = "/";
+        }else{
+            alert("日記の保存に失敗しました。");
         }
     }
 
