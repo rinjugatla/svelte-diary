@@ -1,7 +1,8 @@
 <script>
-
+	import Create from './../../lib/diary/Create.svelte';
+    
 </script>
 
 <main>
-    <h1>create</h1>
+    <Create />
 </main>
