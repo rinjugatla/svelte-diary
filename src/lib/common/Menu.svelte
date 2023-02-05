@@ -50,13 +50,12 @@
         max-width: 640px;
         color: #eef;
         margin: auto;
-        display: block;
         background: gray;
     }
-    a {
+    strong, a {
         cursor: pointer;
         width: max-content;
-        margin: 1rem auto;
+        margin: auto;
     }
     a:hover {
         text-decoration: underline;
