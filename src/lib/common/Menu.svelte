@@ -1,4 +1,5 @@
 <script>
+	import { signInWithGoogle } from './../helper/firebase.js';
     import { fly, scale } from 'svelte/transition';
     import { quadOut } from 'svelte/easing';
     import { page } from "$app/stores";
@@ -23,6 +24,7 @@
                 <a class="block" href={menu.href}>{menu.title}</a>
             {/if}
         {/each}
+        <a class="block" href="#" on:click={signInWithGoogle}>Login</a>
     </nav>
 
     <div class="bar" transition:scale={{ duration: 750, easing: quadOut, opacity: 1 }} />
