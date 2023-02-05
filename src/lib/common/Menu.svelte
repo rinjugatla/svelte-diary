@@ -1,4 +1,5 @@
 <script>
+	import { UserId } from './../store.js';
 	import { signInWithGoogle } from './../helper/firebase.js';
     import { fly, scale } from 'svelte/transition';
     import { quadOut } from 'svelte/easing';
@@ -13,6 +14,10 @@
     ]
 
     export let open;
+    let uid;
+
+    UserId.subscribe(id => { uid = id; });
+
 </script>
 
 {#if open}
