@@ -20,20 +20,25 @@
     });
 </script>
 
-{#await promise}
+{#if author_id}
+     {#await promise}
     <p>Loading</p>
-{:then diaries}
-    {#each diaries as diary}
-         <a href="/diary/{diary.id}" class="flex items-center mb-6">
-            <aside class="diary-aside">
-                <p class="text-left">{dayjs(diary.created_at).format("YY年MM月DD日")}</p>
-                <img class="diary-image" src="{diary.image.startsWith('http') ? diary.image : '/image/dummy.jpeg'}" alt="">
-                <p><StarRating rating={diary.rate / 2 }/></p>
-            </aside>
-            <p>{diary.body}</p>
-         </a>
-    {/each}
-{/await}
+    {:then diaries}
+        {#each diaries as diary}
+            <a href="/diary/{diary.id}" class="flex items-center mb-6">
+                <aside class="diary-aside">
+                    <p class="text-left">{dayjs(diary.created_at).format("YY年MM月DD日")}</p>
+                    <img class="diary-image" src="{diary.image.startsWith('http') ? diary.image : '/image/dummy.jpeg'}" alt="">
+                    <p><StarRating rating={diary.rate / 2 }/></p>
+                </aside>
+                <p>{diary.body}</p>
+            </a>
+        {/each}
+    {/await}
+{:else}
+     <p>ログインしてください</p>
+{/if}
+
 
 <style>
     .diary-aside {
