@@ -1,3 +1,5 @@
 import { writable } from "svelte/store";
+import Cookies from 'js-cookie'
 
-export const UserId = writable("");
+const cookieUid = Cookies.get("uid");
+export const UserId = writable(cookieUid ?? "");
