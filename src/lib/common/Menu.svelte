@@ -1,6 +1,6 @@
 <script>
 	import { UserId } from './../store.js';
-	import { signInWithGoogle } from './../helper/firebase.js';
+	import { signInWithGoogle, signOutWithGoogle } from './../helper/firebase.js';
     import { fly, scale } from 'svelte/transition';
     import { quadOut } from 'svelte/easing';
     import { page } from "$app/stores";
@@ -29,7 +29,12 @@
                 <a class="block" href={menu.href}>{menu.title}</a>
             {/if}
         {/each}
-        <a class="block" href="#" on:click={signInWithGoogle}>Login</a>
+
+        {#if uid}
+             <a class="block" href="#" on:click={signOutWithGoogle}>Logout</a>
+        {:else}
+             <a class="block" href="#" on:click={signInWithGoogle}>Login</a>
+        {/if}
     </nav>
 
     <div class="bar" transition:scale={{ duration: 750, easing: quadOut, opacity: 1 }} />
