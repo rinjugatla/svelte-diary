@@ -9,15 +9,17 @@
     let open;
 </script>
 
-<header class="bg-primiry-900 flex justify-between items-center">
-    <Hamburger bind:open />
-    <img src="/image/logo.png" alt="logo" />
-    <HumidityAlt size={24} class="mr-6"/>
+<header>
+    <div class="bg-primiry-900 flex justify-between items-center">
+        <Hamburger bind:open />
+        <img src="/image/logo.png" alt="logo" />
+        <HumidityAlt size={24} class="mr-6"/>
+    </div>
+    <Menu bind:open/>
 </header>
-<Menu bind:open/>
 
 <style>
-    header {
+    div {
         height: 60px;
         text-align: center;
         max-width: 640px;
@@ -27,10 +29,4 @@
     img {
         max-height: 100%;
     }
-    /* li {
-        display: inline-block;
-        list-style: none;
-        background-color: lightpink;
-        margin-left: 20px;
-    } */
 </style>

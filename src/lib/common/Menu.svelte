@@ -22,19 +22,19 @@
 </script>
 
 {#if open}
-    <nav class="menu" on:click={() => open = false}>
-        {#each MENUS as menu}
+    <nav class="menu" transition:fly={{ y: -15, delay: 50 * MENUS.length }} on:click={() => open = false}>
+        {#each MENUS as menu, i}
             {#if $page.url.pathname === menu.href}
-                <strong class="block">{menu.title}</strong>
+                <strong class="block" transition:fly={{ y: -15, delay: 50 * i }}>{menu.title}</strong>
             {:else}
-                <a class="block" href={menu.href}>{menu.title}</a>
+                <a class="block" transition:fly={{ y: -15, delay: 50 * i }} href={menu.href}>{menu.title}</a>
             {/if}
         {/each}
 
         {#if uid}
-             <a class="block" href="#" on:click={signOutWithGoogle}>Logout</a>
+             <a class="block" href="#" transition:fly={{ y: -15, delay: 50 * MENUS.length }} on:click={signOutWithGoogle}>Logout</a>
         {:else}
-             <a class="block" href="#" on:click={signInWithGoogle}>Login</a>
+             <a class="block" href="#" transition:fly={{ y: -15, delay: 50 * MENUS.length }} on:click={signInWithGoogle}>Login</a>
         {/if}
     </nav>
 
