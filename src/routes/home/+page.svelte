@@ -1,5 +1,6 @@
 <script>
 	import { fetchDiaries } from './../../lib/helper/api.js';
+    import { Spinner } from 'flowbite-svelte';
     import { onMount, onDestroy } from 'svelte';
 	import { UserId } from './../../lib/store.js';
     import StarRating from 'svelte-star-rating';
@@ -21,8 +22,8 @@
 </script>
 
 {#if author_id}
-     {#await promise}
-    <p>Loading</p>
+    {#await promise}
+        <p class="mt-10 flex justify-center"><Spinner color="gray" /></p>
     {:then diaries}
         {#each diaries as diary}
             <a href="/diary/{diary.id}" class="flex items-center mb-6">
