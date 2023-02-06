@@ -19,10 +19,10 @@
             return false;
         }
 
-        const result = await postDiary(author_id, title, body, rate);
-        if(result){
-            alert("日記を保存しました。");
-            document.location.href = "/";
+        const diary_id = await postDiary(author_id, title, body, rate);
+        const isSuccess = diary_id != null;
+        if(isSuccess){
+            document.location.href = `/diary/${diary_id}`;
         }else{
             alert("日記の保存に失敗しました。");
         }

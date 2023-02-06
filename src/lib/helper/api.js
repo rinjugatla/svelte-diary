@@ -12,8 +12,7 @@ export const postDiary = async (author_id = "", title = "", body = "", rate = 5)
         created_at: dayjs().format("YYYY/MM/DD HH:mm:ss")
     });
 
-    const isSuccess = docRef.id != null;
-    return isSuccess;
+    return docRef.id;
 }
 
 export const updateDiary = async (id = "", title = "", body = "", rate = 5) => {
