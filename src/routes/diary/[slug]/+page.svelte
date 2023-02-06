@@ -41,7 +41,7 @@
 
         {#if author_id === diary.author_id}
             <div class="mt-5">
-                <Button on:click={() => document.location.href = `/diary/edit/${diary_id}`}>編集</Button>
+                <Button on:click={() => document.location.href = `/edit/${diary_id}`}>編集</Button>
             </div>
         {/if}
     {/if}
