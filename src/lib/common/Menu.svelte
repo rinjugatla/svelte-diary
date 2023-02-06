@@ -9,8 +9,6 @@
     const MENUS = [
         {href: "/", title: "Root"},
         {href: "/home/", title: "Home"},
-        {href: "/about/", title: "About"},
-        {href: "/diary/", title: "Diary"},
         {href: "/create/", title: "Create"},
     ]
 
@@ -32,9 +30,9 @@
         {/each}
 
         {#if uid}
-             <a class="block" href="#" transition:fly={{ y: -15, delay: 50 * MENUS.length }} on:click={signOutWithGoogle}>Logout</a>
+             <a class="block" href="#/" transition:fly={{ y: -15, delay: 50 * MENUS.length }} on:click={signOutWithGoogle}>Logout</a>
         {:else}
-             <a class="block" href="#" transition:fly={{ y: -15, delay: 50 * MENUS.length }} on:click={signInWithGoogle}>Login</a>
+             <a class="block" href="#/" transition:fly={{ y: -15, delay: 50 * MENUS.length }} on:click={signInWithGoogle}>Login</a>
         {/if}
     </nav>
 
