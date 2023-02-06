@@ -27,6 +27,7 @@ export const fetchDiaries = async (author_id = "") => {
         diaries.push({
             id: doc.id,
             author_id: data.author_id,
+            title: data.title,
             body: data.body,
             rate: data.rate,
             image: data.image,
@@ -37,10 +38,10 @@ export const fetchDiaries = async (author_id = "") => {
     return diaries;
 };
 
-export const fetchDiary = async(id = "") => {
+export const fetchDiary = async (id = "hoge") => {
     const docRef = doc(db, "diaries", id);
     const docSnap = await getDoc(docRef);
     
-    if(!docSnap.exists()){ return null; }
+    if(!docSnap.exists()){ return false; }
     return docSnap.data();
 };

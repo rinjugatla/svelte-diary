@@ -32,7 +32,7 @@
                     <img class="diary-image" src="{diary.image.startsWith('http') ? diary.image : '/image/dummy.jpeg'}" alt="">
                     <p><StarRating rating={diary.rate / 2 }/></p>
                 </aside>
-                <p>{diary.body}</p>
+                <p>{diary.title}</p>
             </a>
         {/each}
     {/await}
