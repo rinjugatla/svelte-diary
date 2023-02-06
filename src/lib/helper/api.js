@@ -2,9 +2,10 @@ import { doc, collection, addDoc, query, where, getDoc, getDocs, orderBy } from 
 import { db } from "./firebase";
 import dayjs from 'dayjs'
 
-export const postDiary = async (author_id = "", body = "", rate = 5) => {
+export const postDiary = async (author_id = "", title = "", body = "", rate = 5) => {
     const docRef = await addDoc(collection(db, "diaries"), {
         author_id: author_id,
+        title: title,
         body: body,
         rate: rate,
         image: "",

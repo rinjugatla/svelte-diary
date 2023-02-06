@@ -13,11 +13,11 @@
     const unsubscribe = UserId.subscribe( id => author_id = id);
     const submit = async () => {
         if(body.length < body_min_length){
-            alert("日記には10文字異常が必要です。");
+            alert("日記には10文字以上が必要です。");
             return false;
         }
 
-        const result = await postDiary(author_id, body, rate);
+        const result = await postDiary(author_id, title, body, rate);
         if(result){
             alert("日記を保存しました。");
             document.location.href = "/";
@@ -36,6 +36,10 @@
     <div>
         <p class="mb-4">今日の気分は {rate}点！</p>
         <Range id="rate" min="0" max="10" bind:value={rate} step="1"/>
+    </div>
+    <div>
+        <Label for="title-text" class="mb-4">タイトル</Label>
+        <Textarea id="title-text" placeholder="" rows="1" bind:value={body}/>
     </div>
     <div>
         <Label for="body-text" class="mb-4">内容</Label>
