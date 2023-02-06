@@ -1,4 +1,4 @@
-import { doc, collection, addDoc, query, where, getDoc, getDocs, orderBy } from "firebase/firestore";
+import { doc, collection, addDoc, updateDoc, query, where, getDoc, getDocs, orderBy } from "firebase/firestore";
 import { db } from "./firebase";
 import dayjs from 'dayjs'
 
@@ -14,6 +14,18 @@ export const postDiary = async (author_id = "", title = "", body = "", rate = 5)
 
     const isSuccess = docRef.id != null;
     return isSuccess;
+}
+
+export const updateDiary = async (id = "", title = "", body = "", rate = 5) => {
+    const washingtonRef = doc(db, "diaries", id);
+
+    const docRef = await updateDoc(washingtonRef, {
+        title: title,
+        body: body,
+        rate: rate
+    });
+
+    return true;
 }
 
 export const fetchDiaries = async (author_id = "") => {
