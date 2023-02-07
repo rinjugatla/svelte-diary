@@ -28,9 +28,9 @@ export const updateDiary = async (id = "", title = "", body = "", rate = 5) => {
 }
 
 export const fetchDiaries = async (author_id = "") => {
-    const q = query(collection(db, "diaries"), 
-                    where("author_id", "==", author_id),
-                    orderBy("created_at", "desc"));
+    const q = query(collection(db, "diaries"),
+        where("author_id", "==", author_id),
+        orderBy("created_at", "desc"));
 
     const querySnapshot = await getDocs(q);
     let diaries = [];
@@ -53,7 +53,7 @@ export const fetchDiaries = async (author_id = "") => {
 export const fetchDiary = async (id = "hoge") => {
     const docRef = doc(db, "diaries", id);
     const docSnap = await getDoc(docRef);
-    
-    if(!docSnap.exists()){ return false; }
+
+    if (!docSnap.exists()) { return false; }
     return docSnap.data();
 };

@@ -1,9 +1,9 @@
 <script>
     import "../../app.postcss";
     import { assets } from "$app/paths";
-    
-    import { Hamburger } from 'svelte-hamburgers';
-	import Menu from './Menu.svelte';
+
+    import { Hamburger } from "svelte-hamburgers";
+    import Menu from "./Menu.svelte";
     import HumidityAlt from "carbon-icons-svelte/lib/HumidityAlt.svelte";
 
     let open;
@@ -12,10 +12,14 @@
 <header>
     <div class="bg-primiry-900 flex justify-between items-center">
         <Hamburger bind:open />
-        <img src="/image/logo.png" alt="logo" on:click={() => location.href="/home/"} />
-        <HumidityAlt size={24} class="mr-6"/>
+        <img
+            src="/image/logo.png"
+            alt="logo"
+            on:click={() => (location.href = "/home/")}
+        />
+        <HumidityAlt size={24} class="mr-6" />
     </div>
-    <Menu bind:open/>
+    <Menu bind:open />
 </header>
 
 <style>

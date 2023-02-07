@@ -1,10 +1,7 @@
 <script>
-    
 </script>
 
-<footer>
-    フッタ
-</footer>
+<footer>フッタ</footer>
 
 <style>
     footer {

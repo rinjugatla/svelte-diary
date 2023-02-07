@@ -1,42 +1,72 @@
 <script>
     import { onDestroy } from "svelte";
-	import { UserId } from './../store.js';
-	import { signInWithGoogle, signOutWithGoogle } from './../helper/firebase.js';
-    import { fly, scale } from 'svelte/transition';
-    import { quadOut } from 'svelte/easing';
+    import { UserId } from "./../store.js";
+    import {
+        signInWithGoogle,
+        signOutWithGoogle,
+    } from "./../helper/firebase.js";
+    import { fly, scale } from "svelte/transition";
+    import { quadOut } from "svelte/easing";
     import { page } from "$app/stores";
 
     const MENUS = [
-        {href: "/", title: "Root"},
-        {href: "/home/", title: "Home"},
-        {href: "/create/", title: "Create"},
-    ]
+        { href: "/", title: "Root" },
+        { href: "/home/", title: "Home" },
+        { href: "/create/", title: "Create" },
+    ];
 
     export let open;
     let uid;
 
-    const unsubscribe = UserId.subscribe(id => { uid = id; });
-    onDestroy (() => { unsubscribe(); });
+    const unsubscribe = UserId.subscribe((id) => {
+        uid = id;
+    });
+    onDestroy(() => {
+        unsubscribe();
+    });
 </script>
 
 {#if open}
-    <nav class="menu" transition:fly={{ y: -15, delay: 50 * MENUS.length }} on:click={() => open = false}>
+    <nav
+        class="menu"
+        transition:fly={{ y: -15, delay: 50 * MENUS.length }}
+        on:click={() => (open = false)}
+    >
         {#each MENUS as menu, i}
             {#if $page.url.pathname === menu.href}
-                <strong class="block" transition:fly={{ y: -15, delay: 50 * i }}>{menu.title}</strong>
+                <strong class="block" transition:fly={{ y: -15, delay: 50 * i }}
+                    >{menu.title}</strong
+                >
             {:else}
-                <a class="block" transition:fly={{ y: -15, delay: 50 * i }} href={menu.href}>{menu.title}</a>
+                <a
+                    class="block"
+                    transition:fly={{ y: -15, delay: 50 * i }}
+                    href={menu.href}>{menu.title}</a
+                >
             {/if}
         {/each}
 
         {#if uid}
-             <a class="block" href="#/" transition:fly={{ y: -15, delay: 50 * MENUS.length }} on:click={signOutWithGoogle}>Logout</a>
+            <a
+                class="block"
+                href="#/"
+                transition:fly={{ y: -15, delay: 50 * MENUS.length }}
+                on:click={signOutWithGoogle}>Logout</a
+            >
         {:else}
-             <a class="block" href="#/" transition:fly={{ y: -15, delay: 50 * MENUS.length }} on:click={signInWithGoogle}>Login</a>
+            <a
+                class="block"
+                href="#/"
+                transition:fly={{ y: -15, delay: 50 * MENUS.length }}
+                on:click={signInWithGoogle}>Login</a
+            >
         {/if}
     </nav>
 
-    <div class="bar" transition:scale={{ duration: 750, easing: quadOut, opacity: 1 }} />
+    <div
+        class="bar"
+        transition:scale={{ duration: 750, easing: quadOut, opacity: 1 }}
+    />
 {/if}
 
 <style>
@@ -50,7 +80,8 @@
         margin: auto;
         background: gray;
     }
-    strong, a {
+    strong,
+    a {
         cursor: pointer;
         width: max-content;
         margin: auto;

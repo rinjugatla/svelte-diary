@@ -1,22 +1,22 @@
 <script>
-	import { fetchDiaries } from './../../lib/helper/api.js';
-    import { Spinner } from 'flowbite-svelte';
-    import { onMount, onDestroy } from 'svelte';
-	import { UserId } from './../../lib/store.js';
-    import StarRating from 'svelte-star-rating';
-    import dayjs from 'dayjs';
+    import { fetchDiaries } from "./../../lib/helper/api.js";
+    import { Spinner } from "flowbite-svelte";
+    import { onMount, onDestroy } from "svelte";
+    import { UserId } from "./../../lib/store.js";
+    import StarRating from "svelte-star-rating";
+    import dayjs from "dayjs";
 
     let author_id = null;
 
-    const unsubscribe = UserId.subscribe( id => author_id = id);
+    const unsubscribe = UserId.subscribe((id) => (author_id = id));
 
     let promise = fetchDiaries();
-    onMount ( async () => {
+    onMount(async () => {
         promise = await fetchDiaries(author_id);
         console.log(promise);
     });
 
-    onDestroy( () => {
+    onDestroy(() => {
         unsubscribe();
     });
 </script>
@@ -28,18 +28,25 @@
         {#each diaries as diary}
             <a href="/diary/{diary.id}" class="flex items-center mb-6">
                 <aside class="diary-aside">
-                    <p class="text-left">{dayjs(diary.created_at).format("YY年MM月DD日")}</p>
-                    <img class="diary-image" src="{diary.image.startsWith('http') ? diary.image : '/image/dummy.jpeg'}" alt="">
-                    <p><StarRating rating={diary.rate / 2 }/></p>
+                    <p class="text-left">
+                        {dayjs(diary.created_at).format("YY年MM月DD日")}
+                    </p>
+                    <img
+                        class="diary-image"
+                        src={diary.image.startsWith("http")
+                            ? diary.image
+                            : "/image/dummy.jpeg"}
+                        alt=""
+                    />
+                    <p><StarRating rating={diary.rate / 2} /></p>
                 </aside>
                 <p>{diary.title}</p>
             </a>
         {/each}
     {/await}
 {:else}
-     <p>ログインしてください</p>
+    <p>ログインしてください</p>
 {/if}
-
 
 <style>
     .diary-aside {
