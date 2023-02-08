@@ -17,7 +17,7 @@
     let promise = fetchDiary();
     let rating = 1.0;
     onMount(async () => {
-        promise = await fetchDiary(diary_id);
+        promise = await fetchDiary(author_id, diary_id);
     });
 
     onDestroy(() => {
@@ -41,7 +41,7 @@
 
         <img src={diary.image} alt="image_preview" />
 
-        {#if author_id === diary.author_id}
+        {#if diary.can_edit}
             <div class="mt-5">
                 <Button
                     on:click={() =>

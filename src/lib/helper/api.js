@@ -79,10 +79,24 @@ export const fetchDiaries = async (author_id = "") => {
     return diaries;
 };
 
-export const fetchDiary = async (id = "hoge") => {
+export const fetchDiary = async (author_id = "", id = "hoge") => {
     const docRef = doc(db, "diaries", id);
     const docSnap = await getDoc(docRef);
 
     if (!docSnap.exists()) { return false; }
-    return docSnap.data();
+
+    const data = docSnap.data();
+    const result = {
+        id: data.id,
+        can_edit: data.author_id === author_id,
+        // 例えばここでauthor_idを返すとブラウザの通信ログでidが見える？
+        // author_id: author_id,
+        title: data.title,
+        body: data.body,
+        rate: data.rate,
+        image: data.image,
+        created_at: data.created_at
+    };
+
+    return result;
 };

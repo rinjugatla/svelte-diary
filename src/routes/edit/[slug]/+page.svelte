@@ -23,14 +23,13 @@
     let promise = fetchDiary();
     let rating = 1.0;
     onMount(async () => {
-        promise = await fetchDiary(diary_id);
+        promise = await fetchDiary(author_id, diary_id);
         rate = promise.rate;
         title = promise.title;
         body = promise.body;
     });
 
     const submit = async (data) => {
-        console.log(data);
         if (body.length < body_min_length) {
             alert("日記には10文字以上が必要です。");
             return false;
@@ -54,7 +53,9 @@
 {#await promise}
     <p class="mt-10 flex justify-center"><Spinner color="gray" /></p>
 {:then diary}
-    {#if diary}
+    {#if diary.can_edit}
         <Edit on:submit={submit} bind:rate bind:title bind:body bind:image />
+    {:else}
+        <p>作者以外の日記の編集は許可されていません。</p>
     {/if}
 {/await}
