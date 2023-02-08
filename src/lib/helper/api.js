@@ -16,9 +16,9 @@ export const postDiary = async (author_id = "", title = "", body = "", rate = 5)
 }
 
 export const updateDiary = async (id = "", title = "", body = "", rate = 5) => {
-    const washingtonRef = doc(db, "diaries", id);
-
-    const docRef = await updateDoc(washingtonRef, {
+    const diaryRef = doc(db, "diaries", id);
+    if(!diaryRef){return false;}
+    const docRef = await updateDoc(diaryRef, {
         title: title,
         body: body,
         rate: rate
