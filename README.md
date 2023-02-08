@@ -1,38 +1,35 @@
-# create-svelte
+# svelte-diary
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Udemy講座
 
-## Creating a project
+- UdemyのSvelte講座を参考にSveltekitで日記機能を実装しました。
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+[【Svelte.js入門】ReactやVueに挫折した人でも大丈夫！Svelteとfirebaseでシンプルアプリ開発](https://www.udemy.com/course/sveltebasic/)
 
-# create a new project in my-app
-npm create svelte@latest my-app
+## ライブラリ
+
+- 講座で使用されているUIライブラリ`Smelte`は更新が止まっているので`Flowbite-Svelte`を使用しました。
+- [Flowbite-Svelte](https://flowbite-svelte.com/)
+
+## 設定
+
+### .env
+
+公開情報には接頭語として`PUBLIC_`をつける必要があります。
+
+```
+PUBLIC_FIREBASE_API_KEY = ""
+PUBLIC_FIREBASE_AUTH_DOMAIN = ""
+PUBLIC_FIREBASE_PROJECT_ID = ""
+PUBLIC_FIREBASE_STORAGE_BUCKET = ""
+PUBLIC_FIREBASE_MESSAGING_SENDER_ID = ""
+PUBLIC_FIREBASE_APP_ID = ""
 ```
 
-## Developing
+## 課題
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- 主にセキュリティに関して
+  - 記事URLを知っていれば誰でも記事を閲覧、編集できる問題
+  - author_idを利用して記事製作者のみ閲覧、編集できるようには変更できるがそれでよいのか
+  - Cookieの取り扱い
