@@ -39,6 +39,8 @@
         <hr class="mt-3 mb-3" />
         <p>{diary.body}</p>
 
+        <img src={diary.image} alt="image_preview" />
+
         {#if author_id === diary.author_id}
             <div class="mt-5">
                 <Button

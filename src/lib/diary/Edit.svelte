@@ -38,7 +38,8 @@
         <Textarea id="body-text" placeholder="" rows="10" bind:value={body} />
     </div>
     <div>
-        <input class="mb-4"
+        <input
+            class="mb-4"
             type="file"
             accept="image/*"
             bind:this={image}

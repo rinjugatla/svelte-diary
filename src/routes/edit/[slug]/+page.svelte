@@ -16,6 +16,7 @@
     let rate = 5;
     let title = "";
     let body = "";
+    let image = null;
     let author_id = null;
     const unsubscribe = UserId.subscribe((id) => (author_id = id));
 
@@ -35,7 +36,7 @@
             return false;
         }
 
-        const result = await updateDiary(diary_id, title, body, rate);
+        const result = await updateDiary(diary_id, title, body, rate, image);
         if (result) {
             document.location.href = `/diary/${diary_id}`;
         } else {
@@ -54,6 +55,6 @@
     <p class="mt-10 flex justify-center"><Spinner color="gray" /></p>
 {:then diary}
     {#if diary}
-        <Edit on:submit={submit} bind:rate bind:title bind:body />
+        <Edit on:submit={submit} bind:rate bind:title bind:body bind:image />
     {/if}
 {/await}

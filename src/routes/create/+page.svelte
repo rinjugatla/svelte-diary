@@ -9,6 +9,7 @@
     let rate = 5;
     let title = "";
     let body = "";
+    let image = null;
     let author_id = null;
 
     const unsubscribe = UserId.subscribe((id) => (author_id = id));
@@ -19,7 +20,7 @@
             return false;
         }
 
-        const diary_id = await postDiary(author_id, title, body, rate);
+        const diary_id = await postDiary(author_id, title, body, rate, image);
         const isSuccess = diary_id != null;
         if (isSuccess) {
             document.location.href = `/diary/${diary_id}`;
@@ -34,4 +35,4 @@
 </script>
 
 <h3>日記を作成</h3>
-<Edit on:submit={submit} bind:rate bind:title bind:body />
+<Edit on:submit={submit} bind:rate bind:title bind:body bind:image />
