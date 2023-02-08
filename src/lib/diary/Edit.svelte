@@ -4,6 +4,24 @@
     export let rate = 0;
     export let title = "";
     export let body = "";
+    export let image = "";
+    export let preview;
+
+    const onFileSelect = (e) => {
+        let target = e.target.files[0];
+        image = target;
+
+        if (!image) {
+            preview = null;
+            return;
+        }
+
+        let reader = new FileReader();
+        reader.readAsDataURL(target);
+        reader.onload = (e) => {
+            preview = e.target.result;
+        };
+    };
 </script>
 
 <form on:submit class="p-5">
@@ -18,6 +36,17 @@
     <div>
         <Label for="body-text" class="mb-4">内容</Label>
         <Textarea id="body-text" placeholder="" rows="10" bind:value={body} />
+    </div>
+    <div>
+        <input class="mb-4"
+            type="file"
+            accept="image/*"
+            bind:this={image}
+            on:change={(e) => onFileSelect(e)}
+        />
+        {#if preview}
+            <img src={preview} alt="image_preview" />
+        {/if}
     </div>
     <Button type="submit">保存</Button>
 </form>
